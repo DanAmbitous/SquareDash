@@ -79,7 +79,7 @@ class Square {
 }
 
 let squareUser = new Square(0, 0, 10, "Player", "blue");
-squareUser.drawUser();
+squareUser.draw();
 
 $(document).keydown(function(event) {
     if (event.key === "ArrowRight" || event.key === "d") {
@@ -251,36 +251,60 @@ function collisionDetection() {
     if (Math.abs(squareUser.x - squareTwo.x) <= 50 && Math.abs(squareUser.y - squareTwo.y) <= 50) {
         clearInterval(moveInterval);
         clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareThree.x) <= 50 && Math.abs(squareUser.y - squareThree.y) <= 50) {
         clearInterval(moveInterval);
         clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareFour.x) <= 50 && Math.abs(squareUser.y - squareFour.y) <= 50) {
         clearInterval(moveInterval);
         clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareFive.x) <= 50 && Math.abs(squareUser.y - squareFive.y) <= 50) {
         clearInterval(moveInterval);
         clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareSix.x) <= 50 && Math.abs(squareUser.y - squareSix.y) <= 50) {
         console.log(`You have crashed with ${squareSix.name} at ${squareUser.x}x ${squareUser.y}y`);
+        clearInterval(moveInterval);
+        clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareSeven.x) <= 50 && Math.abs(squareUser.y - squareSeven.y) <= 50) {
         console.log(`You have crashed with ${squareSeven.name} at ${squareUser.x}x ${squareUser.y}y`);
+        clearInterval(moveInterval);
+        clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareEight.x) <= 50 && Math.abs(squareUser.y - squareEight.y) <= 50) {
         console.log(`You have crashed with ${squareEight.name} at ${squareUser.x}x ${squareUser.y}y`);
+        clearInterval(moveInterval);
+        clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareNine.x) <= 50 && Math.abs(squareUser.y - squareNine.y) <= 50) {
         console.log(`You have crashed with ${squareNine.name} at ${squareUser.x}x ${squareUser.y}y`);
+        clearInterval(moveInterval);
+        clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 }
