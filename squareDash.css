@@ -1,0 +1,20 @@
+#prompt {
+    background-color: white;
+    width: 500px;
+    height: 500px;
+    box-shadow:1px 1px 5px gray;
+    position: fixed;
+    left: 200px;
+    top: 200px;
+    border-radius:10px;
+    z-index: 1;
+    /*display:none;*/
+}
+
+#points-end {
+    font-size:24px;
+}
+
+#prompt-header {
+    font-size:36px;
+}

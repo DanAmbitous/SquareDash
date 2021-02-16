@@ -7,6 +7,25 @@ class Square {
         this.color = color;
     }
 
+    drawUser() {
+        let canvas = document.createElement("canvas");
+        this.canvas = canvas;
+        canvas.id = this.name;
+        canvas.className = "square";
+        canvas.width = 1000;
+        canvas.height = 1000;
+        canvas.style.position = "fixed";
+        canvas.style.left = this.x;
+        canvas.style.top = this.y;
+
+        let ctx = canvas.getContext("2d");
+        this.ctx = ctx;
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, 25, 25);
+
+        $("body").append(this.canvas);
+    }
+
     draw() {
         let canvas = document.createElement("canvas");
         this.canvas = canvas;
@@ -60,7 +79,7 @@ class Square {
 }
 
 let squareUser = new Square(0, 0, 10, "Player", "blue");
-squareUser.draw();
+squareUser.drawUser();
 
 $(document).keydown(function(event) {
     if (event.key === "ArrowRight" || event.key === "d") {
@@ -127,6 +146,7 @@ let squareNine;
 
 let moveInterval;
 let counter;
+let initalTime;
 
 setTimeout(function() {
     $(canvas).remove();
@@ -207,7 +227,7 @@ moveInterval = setInterval(function() {
         collisionDetection();
     }, 30);
 
-    let initalTime = 1;
+    initalTime = 1;
 
     counter = setInterval(function() {
         $("p").text(`Points: ${initalTime}`);
@@ -216,10 +236,16 @@ moveInterval = setInterval(function() {
     }, 1000)
 }, 4000)
 
+$("button").click(function() {
+    location.reload();
+})
+
 function collisionDetection() {
     if (Math.abs(squareUser.x - squareOne.x) <= 50 && Math.abs(squareUser.y - squareOne.y) <= 50) {
         clearInterval(moveInterval);
         clearInterval(counter);
+
+        $("#prompt").fadeIn("fast");
     }
 
     if (Math.abs(squareUser.x - squareTwo.x) <= 50 && Math.abs(squareUser.y - squareTwo.y) <= 50) {
@@ -257,5 +283,4 @@ function collisionDetection() {
     if (Math.abs(squareUser.x - squareNine.x) <= 50 && Math.abs(squareUser.y - squareNine.y) <= 50) {
         console.log(`You have crashed with ${squareNine.name} at ${squareUser.x}x ${squareUser.y}y`);
     }
-    
 }
