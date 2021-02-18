@@ -7,25 +7,6 @@ class Square {
         this.color = color;
     }
 
-    drawUser() {
-        let canvas = document.createElement("canvas");
-        this.canvas = canvas;
-        canvas.id = this.name;
-        canvas.className = "square";
-        canvas.width = 1000;
-        canvas.height = 1000;
-        canvas.style.position = "fixed";
-        canvas.style.left = this.x;
-        canvas.style.top = this.y;
-
-        let ctx = canvas.getContext("2d");
-        this.ctx = ctx;
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, 25, 25);
-
-        $("body").append(this.canvas);
-    }
-
     draw() {
         let canvas = document.createElement("canvas");
         this.canvas = canvas;
@@ -118,7 +99,6 @@ $(document).keydown(function(event) {
 let canvas = document.getElementById("canvas");
 canvas.style.position = "fixed";
 let ctx = canvas.getContext("2d");
-
 ctx.strokeStyle = "red";
 ctx.lineWidth = 10;
 
@@ -128,7 +108,6 @@ ctx.lineTo(950, 0);
 ctx.stroke();
 
 let time = 3;
-
 let timer = setInterval(function() {
     $("h1").text(time);
 
@@ -240,14 +219,6 @@ moveInterval = setInterval(function() {
     
         initalTime++;
     }, 1000)
-    let healthBar = document.getElementById("health-bar");
-    let hp = healthBar.getContext("2d");
-
-    hp.strokeStyle = "red";
-    hp.lineWidth = 10;
-    hp.beginPath();
-    hp.arc(850, 50, 20, 0, Math.PI * 2, false);
-    hp.stroke();
 
     $("#prompt-intro").fadeOut("fast");
 }, 4000)
@@ -256,26 +227,12 @@ $("button").click(function() {
     location.reload();
 })
 
-let heatlh = 100;
-let canvasHP = document.getElementById("health-bar");
-
-if (health === 100) {
-    canvasHP
-}
-
 function collisionDetection() {
     if (Math.abs(squareUser.x - squareOne.x) <= 50 && Math.abs(squareUser.y - squareOne.y) <= 50) {
-        health -= 25;
+        clearInterval(moveInterval);
+        clearInterval(counter);
 
-        
-
-
-        if (heatlh === 0) {
-            clearInterval(moveInterval);
-            clearInterval(counter);
-    
-            $("#prompt").fadeIn("fast");
-        }
+        $("#prompt").fadeIn("fast"); 
     }
 
     if (Math.abs(squareUser.x - squareTwo.x) <= 50 && Math.abs(squareUser.y - squareTwo.y) <= 50) {
